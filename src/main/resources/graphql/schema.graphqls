@@ -1,0 +1,41 @@
+type Game {
+    id: String!
+    name: String!
+    genre: String
+    classification: String
+    dev: String
+    details: GameDetails
+    reviews: [Reviews!]!
+    platforms: [Platforms!]!
+}
+
+type GameDetails {
+    id: ID!
+    about: String
+    publishYear: Int
+}
+
+type Platforms {
+    id: ID!
+    name: String!
+    company: String
+}
+
+type Reviews {
+    id: ID!
+    user: String!
+    rating: Int
+    comment: String
+}
+
+type Query {
+    allGames: [Game!]!
+    gameById(id: String!): Game
+
+    gamesByGenre(genre: String!): [Game!]!
+    searchGames(name: String!): [Game!]!
+
+    allPlatforms: [Platforms!]!
+
+    reviewsByGame(gameId: String!): [Reviews!]!
+}
